@@ -5,14 +5,14 @@ pipeline {
     stages{
 
 
-      stage('Checkout) {
+      stage('Checkout') {
        steps {
            checkout scm
         }
      } 
 
  
-     stage('Install Dependencies){ 
+     stage('Install Dependencies'){ 
         steps{
            sh 'npm install'
      } 
