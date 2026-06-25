@@ -6,7 +6,7 @@ function App() {
 		      <div>
 		        {/* Navbar */}
 		        <div style={styles.navbar}>
-		          <h2 style={{ color: "red" }}>YouTube Clone</h2>
+		          <h2 style={{ color: "black" }}>YouTube Clone</h2>
 		          <input style={styles.search} placeholder="Search" />
 		        </div>
 
