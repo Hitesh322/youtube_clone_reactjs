@@ -1,70 +1,176 @@
-# Getting Started with Create React Apps
+# YouTube Clone - CI/CD & DevSecOps Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based YouTube Clone application deployed using an automated CI/CD and DevSecOps pipeline with Jenkins, Docker, SonarQube, OWASP Dependency-Check, Trivy, Prometheus, Grafana, and Node Exporter.
 
-## Available Scripts
+## 🚀 Project Overview
 
-In the project directory, you can run:
+This project demonstrates an end-to-end DevOps workflow where application code is managed through GitHub and automatically processed through a Jenkins CI/CD pipeline.
 
-### `npm start`
+Whenever new code is pushed to the GitHub repository, Jenkins automatically triggers the pipeline to build, scan, containerize, and deploy the application.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🏗️ CI/CD & DevSecOps Pipeline
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```text
+Developer
+    |
+    v
+  GitHub
+    |
+    v
+  Jenkins
+    |
+    +--> Checkout Source Code
+    |
+    +--> Install Dependencies
+    |
+    +--> SonarQube Code Analysis
+    |
+    +--> OWASP Dependency-Check
+    |
+    +--> Build React Application
+    |
+    +--> Build Docker Image
+    |
+    +--> Trivy Vulnerability Scan
+    |
+    +--> Push Image to Docker Hub
+    |
+    +--> Deploy Application using Docker
+    |
+    v
+Application Running
+    |
+    v
+Prometheus + Node Exporter
+    |
+    v
+Grafana
+~~~
 
-### `npm test`
+| Category            | Technologies                       |
+| ------------------- | ---------------------------------- |
+| Application         | React.js                           |
+| Source Control      | Git, GitHub                        |
+| CI/CD               | Jenkins                            |
+| Containerization    | Docker                             |
+| Container Registry  | Docker Hub                         |
+| Code Quality        | SonarQube                          |
+| Dependency Security | OWASP Dependency-Check             |
+| Container Security  | Trivy                              |
+| Monitoring          | Prometheus, Grafana, Node Exporter |
+| Operating System    | Linux                              |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## 🔄 Jenkins Pipeline
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The Jenkins pipeline automates the following stages:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Checkout
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Jenkins pulls the latest source code from the GitHub repository.
 
-### `npm run eject`
+2. Install Dependencies
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Node.js dependencies are installed using npm.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. SonarQube Analysis
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+SonarQube is used to analyze the source code and identify code quality issues.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. OWASP Dependency-Check
 
-## Learn More
+OWASP Dependency-Check scans project dependencies for known security vulnerabilities.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. Build Application
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The React application is built for production.
 
-### Code Splitting
+6. Docker Build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+A Docker image is created for the React application.
 
-### Analyzing the Bundle Size
+7. Trivy Security Scan
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Trivy scans the Docker image for known vulnerabilities before deployment.
 
-### Making a Progressive Web App
+8. Docker Hub
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The Docker image is pushed to Docker Hub.
 
-### Advanced Configuration
+9. Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The application is deployed using Docker.
 
-### Deployment
+## DevSecOps
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Security is integrated into the CI/CD pipeline using:
 
-### `npm run build` fails to minify
+SonarQube for source code quality analysis
+OWASP Dependency-Check for dependency vulnerability scanning
+Trivy for Docker image vulnerability scanning
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This helps identify security issues before the application is deployed.
+
+## Monitoring
+
+The deployed environment is monitored using:
+
+Prometheus - Collects and stores monitoring metrics
+Node Exporter - Collects Linux system metrics
+Grafana - Provides dashboards for monitoring and visualization
+##  Docker
+
+The application is containerized using Docker.
+
+Build the Docker image:
+
+docker build -t youtube-clone .
+
+Run the container:
+
+docker run -d -p 3000:3000 youtube-clone
+
+The application can then be accessed at:
+
+http://localhost:3000
+## Run Locally
+
+Clone the repository:
+
+git clone https://github.com/Hitesh322/youtube_clone_reactjs.git
+
+Navigate to the project:
+
+cd youtube_clone_reactjs
+
+Install dependencies:
+
+npm install
+
+Start the application:
+
+npm start
+
+Open:
+
+http://localhost:3000
+## Key Learnings
+
+Through this project, I gained practical experience in:
+
+CI/CD pipeline automation using Jenkins
+GitHub integration with Jenkins
+Docker containerization
+Docker image management with Docker Hub
+Code quality analysis using SonarQube
+Dependency vulnerability scanning using OWASP
+Container vulnerability scanning using Trivy
+Linux administration
+Application deployment
+Infrastructure and application monitoring
+Prometheus and Grafana integration ‍
+## Author
+
+Hitesh Mahajan
+
+GitHub: https://github.com/Hitesh322
